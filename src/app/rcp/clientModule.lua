@@ -23,16 +23,19 @@ function clientModule.init(callback)
         telemetryconnected = true
         send_auth()
     end)
+
     sk:on("reconnection", function(sck) 
         print("on reconnection")
         telemetryconnected = true
-        startStream()
+        send_auth()
     end)
+    
     sk:on("disconnection", function(sck) 
         print("on disconnection")
         telemetryconnected = false
         stopStream()
     end)
+
     connect()
 end
 
@@ -43,7 +46,7 @@ function connect()
     elseif not isAuth then 
         send_auth()
     else
-        sendMeta()
+        clientModule.sendMeta()
         startStream()
     end
 end
@@ -81,7 +84,7 @@ function handleMessage(msg_object)
         if msg_object.status == "ok" and not isAuth then
             print("TelemetryConnection: authorized to RaceCapture/Live")
             isAuth = true
-            sendMeta(count)
+            clientModule.sendMeta()
             startStream()
         elseif not isAuth then
             -- We failed, abort
@@ -145,7 +148,7 @@ function tablelength(T)
   return count
 end
 
-function sendMeta()
+function clientModule.sendMeta()
     -- TODO handle meta update (where to get the list of meta info?)
     local metaModule = require("metaModule")
     metaModule.init()
