@@ -60,6 +60,7 @@ function wifiModule.setupWifi(callback)
           callback(false) -- flag disconnect
         else
           print("Wifi: Connecting")
+          callback(false) -- flag disconnect
         end
     end)
 
@@ -68,8 +69,8 @@ function wifiModule.setupWifi(callback)
         print("Wifi: Connected as: "..ip)
         callback(true) -- flag connect
 
---            local serverModule = require "serverModule"
---            serverModule.init()
+        local serverModule = require "serverModule"
+        serverModule.init()
     end)
 
     print("Wifi: config with: "..wifiap..":"..wifipassword)

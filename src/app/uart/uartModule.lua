@@ -24,10 +24,13 @@ end
 function uartModule.wifiCallback(success)
     if (success) then
         -- wifi connected
-        clientModule = require "clientModule"
+        if (clientModule == nil) then
+            clientModule = require "clientModule"
+        end
         clientModule.init(uartModule.streamingCallback)
     else
         -- wifi disconnected (not sure what to do with clientModule yet)
+        uartModule.streamingCallback(false, 0)
     end
 end
 
