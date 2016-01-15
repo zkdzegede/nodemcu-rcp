@@ -6,7 +6,7 @@ local clientModule
 local count = 2
 local fileCount = 0
 local fileOpen = false
-local maxFiles = 2
+local maxFiles = 3
 
 function uartModule.init()
     package.loaded[module]=nil
