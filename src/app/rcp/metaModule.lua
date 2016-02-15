@@ -63,7 +63,11 @@ function getSimpleChannelMeta()
               {nm="SectorTime"},
               {nm="PredTime"},
               {nm="ElapsedTime"},
-              {nm="CurrentLap"}
+              {nm="CurrentLap"},
+              {nm="SusTravelF"},
+              {nm="SusTravelR"},
+              {nm="TPS"},
+              {nm="RPM"},
             }
 end
 
@@ -83,16 +87,21 @@ function getChannelMeta()
               {nm="Speed",ut="MPH",min=0.0,max=150.0,prec=2,sr=10},
               {nm="Distance",ut="Miles",min=0.0,max=0.0,prec=3,sr=10},
               {nm="Altitude",ut="Feet",min=0.0,max=4000.0,prec=1,sr=10},
---              {nm="GPSSats",ut="",min=0,max=20,prec=0,sr=10},
---              {nm="GPSQual",ut="",min=0,max=5,prec=0,sr=10},
---              {nm="GPSDOP",ut="",min=0.0,max=20.0,prec=1,sr=10},
               {nm="LapCount",ut="",min=0,max=0,prec=0,sr=10},
               {nm="LapTime",ut="Min",min=0.0,max=0.0,prec=4,sr=10},
               {nm="Sector",ut="",min=0,max=0,prec=0,sr=10},
               {nm="SectorTime",ut="Min",min=0.0,max=0.0,prec=4,sr=10},
               {nm="PredTime",ut="Min",min=0.0,max=0.0,prec=4,sr=5},
               {nm="ElapsedTime",ut="Min",min=0.0,max=0.0,prec=4,sr=10},
-              {nm="CurrentLap",ut="",min=0,max=0,prec=0,sr=10}
+              {nm="CurrentLap",ut="",min=0,max=0,prec=0,sr=10},
+              {nm="GPSSats",ut="",min=0,max=20,prec=0,sr=10},
+              {nm="GPSQual",ut="",min=0,max=5,prec=0,sr=10},
+              {nm="GPSDOP",ut="",min=0.0,max=20.0,prec=1,sr=10},
+              {nm="GPSDOP",ut="",min=0.0,max=20.0,prec=1,sr=10},
+              {nm="SusTravelF",ut="mm",min=0.0,max=150.0,prec=1,sr=10},
+              {nm="SusTravelR",ut="mm",min=0.0,max=80.0,prec=1,sr=10},
+              {nm="TPS",ut="%",min=0.0,max=100.0,prec=1,sr=10},
+              {nm="RPM",ut="rpm",min=0.0,max=18000.0,prec=1,sr=10},
             }
 end
 
