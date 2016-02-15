@@ -14,24 +14,24 @@ function clientModule.init(callback)
     end
 
     sk:on("receive", function(sck, c) 
-        print("receive: "..c) 
+        log.d("receive: "..c) 
         handleMessage(cjson.decode(c))
     end)
 
     sk:on("connection", function(sck) 
-        print("on connection")
+        log.d("on connection")
         telemetryconnected = true
         send_auth()
     end)
 
     sk:on("reconnection", function(sck) 
-        print("on reconnection")
+        log.d("on reconnection")
         telemetryconnected = true
         send_auth()
     end)
     
     sk:on("disconnection", function(sck) 
-        print("on disconnection")
+        log.d("on disconnection")
         telemetryconnected = false
         stopStream()
     end)
@@ -62,7 +62,7 @@ function startStream()
     if isAuth then
         streamingCallback(true, count)
     else
-        print("Cannot start streaming without auth")
+        log.d("Cannot start streaming without auth")
     end
 end
 
@@ -82,22 +82,22 @@ function handleMessage(msg_object)
     
     if msg_object.status then
         if msg_object.status == "ok" and not isAuth then
-            print("TelemetryConnection: authorized to RaceCapture/Live")
+            log.d("TelemetryConnection: authorized to RaceCapture/Live")
             isAuth = true
             clientModule.sendMeta()
             startStream()
         elseif not isAuth then
             -- We failed, abort
-            print("TelemetryConnection: failed to authorize, closing")
+            log.d("TelemetryConnection: failed to authorize, closing")
             -- TODO close connection or what?
             -- self.end()
         end
     else
-        print("TelemetryConnection: unknown message. Msg: "..str(msg_object))
+        log.d("TelemetryConnection: unknown message. Msg: "..str(msg_object))
     end
     
     if msg_object.message then
-        print("TelemetryConnection: got message: "..msg_object["message"])
+        log.d("TelemetryConnection: got message: "..msg_object["message"])
     end
 end
 

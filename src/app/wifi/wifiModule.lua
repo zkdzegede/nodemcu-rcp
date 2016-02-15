@@ -66,7 +66,7 @@ function wifiModule.setupWifi(callback)
 
     wifi.sta.eventMonReg(wifi.STA_GOTIP, function()
         ip = wifi.sta.getip()
-        print("Wifi: Connected as: "..ip)
+        log.d("Wifi: Connected as: "..ip)
         callback(true) -- flag connect
 
         local serverModule = require "serverModule"
